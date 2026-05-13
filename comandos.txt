@@ -1,0 +1,6 @@
+./sincronizar-todas.bat nome da musica
+
+Coloque os MP4 em videos-para-converter
+O conversor cria um TXT vazio em letras com o mesmo nome compativel do MP3
+
+./converter-mp4-para-mp3.bat
