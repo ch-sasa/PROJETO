@@ -1,0 +1,1154 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    min-height: 100vh;
+    overflow-x: hidden;
+    background-image: url("../imagens/HIHIHI.png");
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: rgb(0, 0, 0);
+    transition: background-color 0.28s ease, color 0.28s ease;
+
+    /* Espaço para o topo fixo não cobrir o conteúdo */
+    padding-top: 100px;
+}
+
+body.spa-trocando {
+    overflow: hidden;
+}
+
+:root {
+    --ciano: rgb(0, 238, 255);
+    --cursor-vermelho: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Cpath d='M4 2L19 15.5L12 16.5L8.7 22L6.4 20.8L9.5 15.4L4 2Z' fill='%23dc143c' stroke='%23000000' stroke-width='2' stroke-linejoin='round'/%3E%3C/svg%3E") 3 2, auto;
+    --cursor-clique-vermelho: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Cpath d='M9 11V4.8C9 3.8 9.8 3 10.8 3C11.8 3 12.6 3.8 12.6 4.8V10H13.5V7.2C13.5 6.3 14.2 5.6 15.1 5.6C16 5.6 16.7 6.3 16.7 7.2V10.5H17.4V8.4C17.4 7.5 18.1 6.8 19 6.8C19.9 6.8 20.6 7.5 20.6 8.4V14.2C20.6 18.4 18.1 21 14.2 21H12.2C9.8 21 8.2 20 6.9 18.2L4.3 14.4C3.8 13.7 3.9 12.8 4.6 12.3C5.3 11.8 6.2 11.9 6.8 12.6L9 15.2V11Z' fill='%23dc143c' stroke='%23000000' stroke-width='2' stroke-linejoin='round'/%3E%3C/svg%3E") 9 3, pointer;
+}
+
+html,
+body {
+    cursor: var(--cursor-vermelho);
+}
+
+a,
+button,
+label,
+select,
+input[type="radio"],
+.logo,
+.botao-musica,
+.musica-opcao,
+.jogo-opcao,
+.jogo-jogador-opcao,
+.jogo-radio-opcao,
+.jogo-select-botao,
+.jogo-select-opcao {
+    cursor: var(--cursor-clique-vermelho) !important;
+}
+
+button,
+a,
+.logo,
+.caixa-musica,
+.topo2,
+.topo2 button,
+.botao-musica,
+.menu-mobile-toggle,
+.controle-musica,
+.musica-opcao,
+.musica-letra,
+.musica-tempo,
+.jogo-card,
+.resultado-card,
+.resultado-coluna,
+.jogo-opcao,
+.jogo-nome-opcao,
+.jogo-radio-texto,
+.jogo-select-botao,
+.jogo-select-lista,
+.jogo-select-opcao,
+.jogo-botao,
+.jogo-botao-secundario,
+.botao-tema-site {
+    transition-property: background-color, color, border-color, box-shadow, opacity, transform, filter;
+    transition-duration: 0.28s;
+    transition-timing-function: ease;
+}
+
+button:focus,
+button:focus-visible,
+a:focus,
+a:focus-visible {
+    outline: 0;
+}
+
+button:focus-visible,
+a:focus-visible {
+    box-shadow: 0 0 14px rgba(0, 238, 255, 0.55);
+}
+
+body.tema-trocando button,
+body.tema-trocando a,
+body.tema-trocando .topo2,
+body.tema-trocando .topo2 button,
+body.tema-trocando .botao-musica,
+body.tema-trocando .menu-mobile-toggle,
+body.tema-trocando .controle-musica,
+body.tema-trocando .musica-opcao,
+body.tema-trocando .jogo-opcao,
+body.tema-trocando .jogo-nome-opcao,
+body.tema-trocando .jogo-radio-texto,
+body.tema-trocando .jogo-select-botao,
+body.tema-trocando .jogo-select-opcao,
+body.tema-trocando .jogo-botao,
+body.tema-trocando .jogo-botao-secundario {
+    outline: 0 !important;
+    transition: none !important;
+}
+
+/* TOPO DO SITE */
+.topo {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    column-gap: 40px;
+
+    padding: 18px 50px;
+
+    z-index: 999;
+    transition: padding 0.25s ease;
+}
+
+/* LINK DA LOGO */
+.logo-link {
+    text-decoration: none;
+    color: inherit;
+    justify-self: start;
+}
+
+/* LOGO */
+.logo {
+    color: rgb(0, 0, 0);
+    background-color: var(--ciano);
+    font-size: 2rem;
+    letter-spacing: 3px;
+
+    border: 2px solid var(--ciano);
+    border-radius: 20px;
+
+    padding: 1px 8px;
+
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.logo:hover {
+    background-color: var(--ciano);
+    transform: none;
+    box-shadow: 0 0 20px var(--ciano);
+}
+
+/* CORAÇÃO */
+.heart {
+    display: inline-block;
+    font-size: 27px;
+    margin-right: 2px;
+    margin-left: 2px;
+    color: crimson;
+    animation: pulse 1s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.2);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+/* PLAYER DE MÚSICA NO HEADER */
+.musica-header {
+    position: relative;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    justify-self: center;
+    z-index: 1001;
+    transition: transform 0.28s ease, padding 0.28s ease, border-radius 0.28s ease, box-shadow 0.28s ease;
+}
+
+.logo-link,
+.topo2,
+.menu-mobile-toggle {
+    transform: translateY(0);
+    transition: opacity 0.28s ease, visibility 0.28s ease, transform 0.28s ease;
+}
+
+.topo.compact {
+    padding: 12px 50px;
+}
+
+.topo.compact .logo-link,
+.topo.compact .topo2,
+.topo.compact .menu-mobile-toggle {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transform: translateY(-12px);
+}
+
+.topo.compact .musica-header {
+    position: fixed;
+    top: 12px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1200;
+    background: rgba(20, 20, 20, 0.92);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 999px;
+    padding: 6px 10px;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+
+.topo.compact .botao-musica {
+    width: clamp(170px, 28vw, 230px);
+    height: 32px;
+    border-color: rgba(255, 255, 255, 0.2);
+    background: transparent;
+    color: rgb(255, 255, 255);
+}
+
+.topo.compact .botao-musica:hover {
+    box-shadow: 0 0 16px rgba(255, 255, 255, 0.25);
+}
+
+.topo.compact .musica-header.aberta {
+    transform: translateX(-50%) scale(1.03);
+    box-shadow: 0 14px 34px rgba(0, 0, 0, 0.4);
+}
+
+.topo.compact .musica-header.aberta .botao-musica {
+    width: clamp(190px, 30vw, 250px);
+}
+
+/* BOTÃO PRINCIPAL DA MÚSICA NO HEADER */
+.botao-musica {
+    width: 13rem;
+    height: 34px;
+    padding: 5px 10px;
+
+    color: black;
+    background-color: var(--ciano);
+
+    border: 2px solid var(--ciano);
+    border-radius: 4rem;
+
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.3s ease;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    overflow: hidden;
+    position: relative;
+}
+
+.botao-musica:hover {
+    background-color: var(--ciano);
+    color: black;
+    transform: scale(1.08);
+    box-shadow: 0 0 20px var(--ciano);
+}
+
+/* TEXTO DO BOTÃO DO HEADER */
+.texto-botao-musica {
+    display: block;
+    white-space: nowrap;
+    min-width: 100%;
+    text-align: center;
+}
+
+/* QUANDO UMA MÚSICA ESTÁ TOCANDO */
+.botao-musica.tocando {
+    box-shadow: 0 0 20px var(--ciano);
+    animation: botaoTocando 0.8s infinite alternate;
+}
+
+/* NOME DA MÚSICA COMO LETREIRO */
+.botao-musica.tocando .texto-botao-musica {
+    animation: letreiroMusica var(--tempo-letreiro, 8s) linear infinite;
+}
+
+@keyframes botaoTocando {
+    from {
+        transform: scale(1);
+    }
+
+    to {
+        transform: scale(1.04);
+    }
+}
+
+@keyframes letreiroMusica {
+    from {
+        transform: translateX(100%);
+    }
+
+    to {
+        transform: translateX(-130%);
+    }
+}
+
+/* CAIXA QUE APARECE AO PASSAR O MOUSE */
+.caixa-musica {
+    position: absolute;
+    top: 45px;
+    left: 50%;
+
+    width: 320px;
+    padding: 18px;
+
+    background-color: rgb(255, 255, 255);
+    border: 2px solid var(--ciano);
+    border-radius: 20px;
+
+    text-align: center;
+    box-shadow: 0 0 20px var(--ciano);
+
+    opacity: 0;
+    visibility: hidden;
+
+    transform: translateX(-50%) translateY(10px);
+    transition: 0.3s ease;
+
+    z-index: 1000;
+}
+
+/* MOSTRAR A CAIXA NO HOVER */
+.musica-header:hover .caixa-musica {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(0);
+}
+
+.musica-header.aberta .caixa-musica {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(0);
+}
+
+.topo.compact .musica-header .caixa-musica {
+    transform: translateX(-50%) translateY(8px) scale(0.96);
+    transform-origin: top center;
+}
+
+.topo.compact .musica-header.aberta .caixa-musica,
+.topo.compact .musica-header:hover .caixa-musica {
+    transform: translateX(-50%) translateY(0) scale(1);
+}
+
+/* LOGO DENTRO DA CAIXA */
+.logo-musica {
+    color: black;
+    font-size: 1.5rem;
+    letter-spacing: 3px;
+    margin-bottom: 10px;
+}
+
+/* NOME DA MÚSICA SELECIONADA */
+.caixa-musica h3 {
+    --distancia-nome-caixa: 0px;
+
+    color: black;
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* BOTÕES DE VOLTAR, PLAY/PAUSE E PULAR */
+.musica-tempo {
+    --progresso-musica: 0%;
+    --escala-progresso-musica: 0;
+    --deslocamento-progresso-musica: 0px;
+    --cor-progresso-musica-rgb: 0, 238, 255;
+    --cor-coracao-musica-rgb: 0, 238, 255;
+    --opacidade-coracao-musica: 0.72;
+
+    display: block;
+    position: relative;
+    width: min(230px, 100%);
+    height: 18px;
+    min-height: 18px;
+    margin: 0 auto 10px;
+    padding: 0;
+    overflow: visible;
+    background-color: rgba(0, 238, 255, 0.14);
+    border: 2px solid rgba(0, 238, 255, 0.65);
+    border-radius: 999px;
+    box-shadow: inset 0 0 8px rgba(0, 238, 255, 0.18);
+    touch-action: none;
+    user-select: none;
+}
+
+.musica-tempo:hover,
+.musica-tempo:focus-visible,
+.musica-tempo.arrastando {
+    border-color: var(--ciano);
+    box-shadow: inset 0 0 8px rgba(0, 238, 255, 0.2), 0 0 14px rgba(0, 238, 255, 0.35);
+}
+
+.musica-tempo::before {
+    content: "";
+    position: absolute;
+    inset: 3px;
+    border-radius: inherit;
+    background: linear-gradient(90deg, rgb(0, 238, 255) 0%, rgb(0, 238, 255) 50%, rgb(255, 35, 85) 50%, rgb(255, 35, 85) 100%);
+    box-shadow: 0 0 12px rgba(0, 238, 255, 0.45);
+    clip-path: inset(0 calc(100% - var(--progresso-musica)) 0 0);
+    transition: none;
+}
+
+.musica-tempo::after {
+    content: "\2764";
+    position: absolute;
+    top: 50%;
+    left: 3px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 22px;
+    height: 22px;
+    color: rgba(var(--cor-coracao-musica-rgb), var(--opacidade-coracao-musica));
+    font-size: 20px;
+    line-height: 1;
+    text-shadow: 0 0 8px rgba(var(--cor-coracao-musica-rgb), calc(var(--opacidade-coracao-musica) * 0.95)), 0 0 14px rgba(var(--cor-coracao-musica-rgb), calc(var(--opacidade-coracao-musica) * 0.65));
+    transform: translate(calc(var(--deslocamento-progresso-musica) - 50%), -50%) scale(1);
+    animation: pulsarCoracaoProgresso 1s infinite;
+    transition: none;
+}
+
+@keyframes pulsarCoracaoProgresso {
+    0% {
+        transform: translate(calc(var(--deslocamento-progresso-musica) - 50%), -50%) scale(1);
+    }
+
+    50% {
+        transform: translate(calc(var(--deslocamento-progresso-musica) - 50%), -50%) scale(1.2);
+    }
+
+    100% {
+        transform: translate(calc(var(--deslocamento-progresso-musica) - 50%), -50%) scale(1);
+    }
+}
+
+.musica-tempo-tooltip {
+    position: absolute;
+    bottom: calc(100% + 9px);
+    left: 7px;
+    z-index: 5;
+    min-width: 96px;
+    padding: 7px 10px;
+    color: rgb(0, 0, 0);
+    background-color: rgb(255, 255, 255);
+    border: 2px solid var(--ciano);
+    border-radius: 10px;
+    box-shadow: 0 0 16px rgba(0, 238, 255, 0.7);
+    font-size: 0.78rem;
+    font-weight: 800;
+    font-variant-numeric: tabular-nums;
+    line-height: 1;
+    opacity: 0;
+    pointer-events: none;
+    transform: translate(calc(var(--deslocamento-progresso-musica) - 50%), 4px);
+    transition: opacity 0.16s ease, transform 0.16s ease;
+    white-space: nowrap;
+}
+
+.musica-tempo-tooltip::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: -7px;
+    width: 10px;
+    height: 10px;
+    background-color: rgb(255, 255, 255);
+    border-right: 2px solid var(--ciano);
+    border-bottom: 2px solid var(--ciano);
+    transform: translateX(-50%) rotate(45deg);
+}
+
+.musica-tempo:hover .musica-tempo-tooltip,
+.musica-tempo:focus-visible .musica-tempo-tooltip {
+    opacity: 1;
+    transform: translate(calc(var(--deslocamento-progresso-musica) - 50%), 0);
+}
+
+.controles-musica {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    padding: 1px 8px;
+
+    margin-bottom: 12px;
+}
+
+.controle-musica {
+    width: 3rem;
+
+    color: black;
+    background-color: var(--ciano);
+
+    border: 2px solid var(--ciano);
+    border-radius: 25px;
+
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.3s ease;
+}
+
+.controle-musica:hover {
+    background-color: var(--ciano);
+    color: black;
+    transform: scale(1.08);
+    box-shadow: 0 0 12px var(--ciano);
+}
+
+/* BOTÃO DO MEIO */
+.botao-play-pause {
+    width: 3.5rem;
+    font-size: 1rem;
+}
+
+/* LETRA DA MÚSICA SINCRONIZADA */
+.musica-letra {
+    display: flex;
+    align-items: center;
+    justify-content: safe center;
+    color: rgb(250, 0, 0);
+    background-color: rgb(255, 255, 255);
+
+    font-family: Arial, sans-serif;
+    font-size: 0.85rem;
+    line-height: 1.6;
+
+    width: 100%;
+    height: 96px;
+    min-height: 96px;
+    max-height: 96px;
+
+    padding: 10px;
+    margin-bottom: 12px;
+
+    border-radius: 12px;
+    border: 2px solid var(--ciano);
+
+    text-align: center;
+    font-weight: 700;
+    overflow-wrap: anywhere;
+    opacity: 1;
+
+    /* Permite acompanhar a linha atual */
+    overflow-y: auto;
+    overflow-x: hidden;
+
+    /* Esconde a barra de rolagem */
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+.musica-letra.aparecendo {
+    animation: fraseSuave 0.24s ease;
+}
+
+@keyframes fraseSuave {
+    from {
+        opacity: 0.55;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+.musica-letra::-webkit-scrollbar {
+    display: none;
+}
+
+/* LISTA DE MUSICAS */
+.lista-musicas {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    /* Mostra apenas 3 músicas */
+    max-height: calc((40px * 3) + (8px * 2));
+
+    /* Permite rolar, mas sem mostrar barra */
+    overflow-y: auto;
+    overflow-x: hidden;
+
+    scroll-behavior: smooth;
+
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+/* Esconde a barra no Chrome, Edge e Safari */
+.lista-musicas::-webkit-scrollbar {
+    display: none;
+}
+
+/* BOTÕES DAS MÚSICAS */
+.musica-opcao {
+    width: 100%;
+    height: 40px;
+    flex: 0 0 40px;
+
+    padding: 8px 10px;
+
+    color: black;
+    background-color: transparent;
+
+    border: 2px solid var(--ciano);
+    border-radius: 20px;
+
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.3s ease;
+
+    overflow: hidden;
+    position: relative;
+
+    text-align: left;
+}
+
+/* TEXTO DENTRO DO BOTÃO DA MÚSICA */
+.nome-musica-texto {
+    display: block;
+    white-space: nowrap;
+    transform: translateX(0);
+}
+
+/* QUANDO O NOME FOR GRANDE, ELE SE MOVE NO HOVER */
+.musica-opcao:hover .nome-musica-texto.rolavel {
+    animation: moverNome 5s linear infinite alternate;
+}
+
+@keyframes moverNome {
+    from {
+        transform: translateX(0);
+    }
+
+    to {
+        transform: translateX(calc(-1 * var(--distancia-marquee)));
+    }
+}
+
+.musica-opcao:hover {
+    background-color: var(--ciano);
+    color: black;
+    transform: scale(1.03);
+    box-shadow: 0 0 12px var(--ciano);
+}
+
+/* MÚSICA QUE ESTÁ SELECIONADA */
+.musica-opcao.ativa {
+    background-color: var(--ciano);
+    color: black;
+    box-shadow: 0 0 12px var(--ciano);
+}
+
+/* ÁREA DOS BOTÕES DO MENU */
+.topo2 {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+    justify-self: end;
+    background-color: transparent;
+    border-radius: 4rem;
+}
+
+.menu-mobile-toggle {
+    display: none;
+    width: 5.5rem;
+    padding: 5px 0;
+    color: rgb(0, 0, 0);
+    background-color: var(--ciano);
+    border: 2px solid var(--ciano);
+    border-radius: 4rem;
+    cursor: pointer;
+    font-weight: bold;
+    transition: opacity 0.28s ease, visibility 0.28s ease, transform 0.28s ease;
+}
+
+.menu-mobile-toggle:hover {
+    box-shadow: 0 0 20px var(--ciano);
+}
+
+.menu-icon {
+    display: inline-flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 4px;
+}
+
+.menu-icon span {
+    display: block;
+    width: 18px;
+    height: 2px;
+    background-color: black;
+    border-radius: 2px;
+    transition: transform 0.25s ease, opacity 0.25s ease;
+}
+
+/* BOTÕES DO MENU */
+.topo2 button {
+    width: 7rem;
+    padding: 5px 0;
+
+    color: rgb(0, 0, 0);
+    background-color: var(--ciano);
+
+    border: 2px solid var(--ciano);
+    border-radius: 4rem;
+
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.3s ease;
+
+    text-align: center;
+}
+
+.topo2 button:hover {
+    background-color: var(--ciano);
+    color: black;
+    transform: none;
+    box-shadow: 0 0 20px var(--ciano);
+}
+
+/* CONTEÚDO DA PÁGINA */
+.conteudo {
+    min-height: calc(100vh - 100px);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+    padding: 30px;
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 0.52s cubic-bezier(0.22, 1, 0.36, 1),
+        transform 0.52s cubic-bezier(0.22, 1, 0.36, 1),
+        filter 0.52s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.conteudo.conteudo-saindo,
+.conteudo.conteudo-entrando {
+    opacity: 0;
+    filter: blur(2px);
+    transform: translateY(10px);
+}
+
+.texto {
+    color: black;
+}
+
+.texto .heart {
+    font-size: 3rem;
+}
+
+.love {
+    font-size: 3rem;
+    margin-bottom: 15px;
+}
+
+.texto p {
+    font-size: 1.2rem;
+}
+
+/* RESPONSIVO PARA TABLET */
+@media (min-width: 601px) and (max-width: 1024px) {
+    body {
+        padding-top: 110px;
+    }
+
+    .topo {
+        column-gap: 18px;
+        padding: 14px 20px;
+    }
+
+    .logo {
+        font-size: 1.55rem;
+        letter-spacing: 2px;
+    }
+
+    .botao-musica {
+        width: min(190px, 28vw);
+    }
+
+    .topo2 {
+        gap: 8px;
+    }
+
+    .topo2 button {
+        width: clamp(4.1rem, 8vw, 5.8rem);
+        font-size: 0.78rem;
+    }
+
+    .caixa-musica {
+        width: min(320px, calc(100vw - 24px));
+    }
+}
+
+/* RESPONSIVO PARA CELULAR */
+@media (max-width: 600px) {
+    body {
+        padding-top: 130px;
+    }
+
+    .topo {
+        display: grid;
+        grid-template-columns: auto 1fr auto;
+        align-items: center;
+        gap: 8px;
+        padding: 12px 14px;
+        position: fixed;
+    }
+
+    .logo-link {
+        justify-self: start;
+    }
+
+    .logo {
+        font-size: 1.25rem;
+        letter-spacing: 2px;
+    }
+
+    .menu-mobile-toggle {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        justify-self: end;
+        font-size: 0.8rem;
+        width: 5rem;
+    }
+
+    .musica-header {
+        justify-self: center;
+        width: 100%;
+        max-width: 220px;
+    }
+
+    .caixa-musica {
+        top: 40px;
+        width: min(280px, calc(100vw - 16px));
+    }
+
+    .botao-musica {
+        width: 100%;
+        font-size: 0.85rem;
+    }
+
+    .topo2 {
+        position: absolute;
+        top: 56px;
+        right: 14px;
+        width: 150px;
+        padding: 10px;
+        border: 0;
+        border-radius: 14px;
+        background-color: transparent;
+        box-shadow: none;
+        display: flex;
+        flex-direction: column;
+        gap: 0;
+        justify-content: flex-start;
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+        transform: translateY(-8px);
+        transition: 0.25s ease;
+        z-index: 1300;
+    }
+
+    .topo.menu-aberto .topo2 {
+        opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
+        transform: translateY(0);
+    }
+
+    .topo.menu-aberto .menu-icon span:nth-child(1) {
+        transform: translateY(6px) rotate(45deg);
+    }
+
+    .topo.menu-aberto .menu-icon span:nth-child(2) {
+        opacity: 0;
+    }
+
+    .topo.menu-aberto .menu-icon span:nth-child(3) {
+        transform: translateY(-6px) rotate(-45deg);
+    }
+
+    .topo2 button {
+        width: 100%;
+        font-size: 0.85rem;
+    }
+
+    .topo.compact {
+        padding: 10px 14px;
+    }
+
+    .topo.compact .topo2 {
+        transform: translateY(-8px);
+    }
+
+    .topo.compact.menu-aberto .topo2 {
+        transform: translateY(0);
+    }
+
+    .topo.compact .musica-header {
+        top: 10px;
+        width: auto;
+        max-width: none;
+        padding: 6px 10px;
+    }
+
+    .topo.compact .botao-musica {
+        width: min(210px, calc(100vw - 110px));
+        max-width: 210px;
+    }
+
+    .love {
+        font-size: 2.2rem;
+    }
+}
+
+.botao-tema-site {
+    position: fixed;
+    top: 50%;
+    right: 0;
+    z-index: 1600;
+    width: 29px;
+    height: 52px;
+    color: rgb(0, 0, 0);
+    background-color: var(--ciano);
+    border: 2px solid var(--ciano);
+    border-right: 0;
+    border-radius: 11px 0 0 11px;
+    box-shadow: 0 0 18px rgba(0, 238, 255, 0.75);
+    cursor: var(--cursor-clique-vermelho) !important;
+    font-size: 0.94rem;
+    font-weight: 900;
+    line-height: 1;
+    transform: translateY(-50%);
+    transition: transform 0.24s ease, box-shadow 0.24s ease, background-color 0.24s ease;
+}
+
+.botao-tema-site:hover {
+    box-shadow: 0 0 24px var(--ciano);
+    transform: translateY(-50%) translateX(-4px);
+}
+
+body.tema-escuro {
+    --ciano: rgb(54, 185, 198);
+    background-color: rgb(14, 16, 20);
+    color: rgb(226, 231, 235);
+}
+
+body.tema-escuro .texto,
+body.tema-escuro .jogo-app,
+body.tema-escuro .jogo-titulo,
+body.tema-escuro .jogo-pergunta,
+body.tema-escuro .jogo-campo label,
+body.tema-escuro .jogo-label,
+body.tema-escuro .jogo-legenda,
+body.tema-escuro .resultado-coluna h4 {
+    color: rgb(245, 247, 250);
+}
+
+body.tema-escuro .jogo-subtitulo,
+body.tema-escuro .resultado-pergunta {
+    color: rgb(190, 198, 205);
+}
+
+body.tema-escuro .topo2,
+body.tema-escuro .jogo-card,
+body.tema-escuro .resultado-card,
+body.tema-escuro .resultado-coluna,
+body.tema-escuro .jogo-opcao,
+body.tema-escuro .jogo-nome-opcao,
+body.tema-escuro .jogo-radio-texto,
+body.tema-escuro .jogo-select-botao,
+body.tema-escuro .jogo-select-lista,
+body.tema-escuro .jogo-select-opcao,
+body.tema-escuro .jogo-botao-secundario {
+    color: rgb(245, 247, 250);
+    background-color: rgb(18, 22, 30);
+}
+
+body.tema-escuro .jogo-card,
+body.tema-escuro .resultado-card,
+body.tema-escuro .resultado-coluna,
+body.tema-escuro .jogo-opcao,
+body.tema-escuro .jogo-nome-opcao,
+body.tema-escuro .jogo-radio-texto,
+body.tema-escuro .jogo-select-botao,
+body.tema-escuro .jogo-select-lista,
+body.tema-escuro .jogo-select-opcao,
+body.tema-escuro .jogo-botao-secundario {
+    border-color: rgba(54, 185, 198, 0.5);
+}
+
+body.tema-escuro .musica-opcao {
+    color: rgb(245, 247, 250);
+    background-color: rgb(18, 22, 30);
+}
+
+body.tema-escuro .musica-tempo {
+    color: rgb(245, 247, 250);
+    background-color: rgba(54, 185, 198, 0.14);
+    border-color: rgba(54, 185, 198, 0.65);
+}
+
+body.tema-escuro .musica-tempo-tooltip {
+    color: rgb(245, 247, 250);
+    background-color: rgb(13, 16, 22);
+    border-color: rgba(54, 185, 198, 0.85);
+    box-shadow: 0 0 16px rgba(54, 185, 198, 0.65);
+}
+
+body.tema-escuro .musica-tempo-tooltip::after {
+    background-color: rgb(13, 16, 22);
+    border-color: rgba(54, 185, 198, 0.85);
+}
+
+body.tema-escuro .musica-opcao:hover,
+body.tema-escuro .musica-opcao.ativa,
+body.tema-escuro .jogo-jogador-opcao:hover .jogo-nome-opcao,
+body.tema-escuro .jogo-jogador-opcao:focus-within .jogo-nome-opcao,
+body.tema-escuro .jogo-jogador-opcao:active .jogo-nome-opcao,
+body.tema-escuro .jogo-jogador-opcao input:checked+.jogo-nome-opcao,
+body.tema-escuro .jogo-radio-opcao:hover .jogo-radio-texto,
+body.tema-escuro .jogo-radio-opcao:focus-within .jogo-radio-texto,
+body.tema-escuro .jogo-radio-opcao:active .jogo-radio-texto,
+body.tema-escuro .jogo-radio-opcao input:checked+.jogo-radio-texto,
+body.tema-escuro .jogo-select-botao:hover,
+body.tema-escuro .jogo-select-botao:focus,
+body.tema-escuro .jogo-select-personalizado.aberta .jogo-select-botao,
+body.tema-escuro .jogo-select-opcao:hover,
+body.tema-escuro .jogo-select-opcao:focus,
+body.tema-escuro .jogo-select-opcao.ativa {
+    color: rgb(0, 0, 0);
+    background-color: var(--ciano);
+}
+
+body.tema-escuro .jogo-info,
+body.tema-escuro .resultado-item,
+body.tema-escuro .resultado-vencedor {
+    color: rgb(245, 247, 250);
+    background-color: rgba(54, 185, 198, 0.08);
+}
+
+body.tema-escuro .logo,
+body.tema-escuro .botao-musica,
+body.tema-escuro .controle-musica,
+body.tema-escuro .topo2 button,
+body.tema-escuro .menu-mobile-toggle,
+body.tema-escuro .botao-tema-site {
+    color: rgb(0, 0, 0);
+    background-color: rgb(0, 238, 255);
+    border-color: rgb(0, 238, 255);
+}
+
+body.tema-escuro .logo:hover,
+body.tema-escuro .botao-musica:hover,
+body.tema-escuro .controle-musica:hover,
+body.tema-escuro .topo2 button:hover,
+body.tema-escuro .menu-mobile-toggle:hover,
+body.tema-escuro .botao-tema-site,
+body.tema-escuro .botao-tema-site:hover {
+    box-shadow: 0 0 20px rgb(0, 238, 255);
+}
+
+body.tema-escuro .topo2 {
+    color: rgb(0, 0, 0);
+    border-color: rgb(0, 238, 255);
+    border: 0;
+    box-shadow: none;
+    background-color: transparent;
+}
+
+body.tema-escuro .topo,
+body.tema-escuro .topo.compact .musica-header,
+body.tema-escuro .topo.compact .musica-header.aberta {
+    background: transparent;
+    border-color: transparent;
+    box-shadow: none;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+}
+
+body.tema-escuro .caixa-musica {
+    color: rgb(245, 247, 250);
+    background-color: rgb(18, 22, 30);
+    border-color: rgba(54, 185, 198, 0.65);
+}
+
+body.tema-escuro .caixa-musica h3,
+body.tema-escuro .logo-musica,
+body.tema-escuro .musica-opcao {
+    color: rgb(245, 247, 250);
+}
+
+body.tema-escuro .musica-letra {
+    color: rgb(255, 80, 110);
+    background-color: rgb(13, 16, 22);
+}
+
+body.tema-escuro .jogo-aviso {
+    color: rgb(255, 160, 180);
+    background-color: rgba(220, 20, 60, 0.12);
+}
+
+body.tema-escuro .errou {
+    color: rgb(255, 160, 180);
+}
+
+body.tema-escuro .acertou {
+    color: rgb(120, 245, 185);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation: none !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}

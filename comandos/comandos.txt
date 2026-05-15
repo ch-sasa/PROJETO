@@ -1,0 +1,17 @@
+Ativar venv no terminal:
+.\.venv\Scripts\Activate.ps1
+
+Converter videos, sincronizar letras e atualizar musicas:
+1. Coloque o video em midia\videos-para-converter
+2. Se quiser letra sincronizada, coloque a letra em midia\letras
+3. Abra o comando e escolha uma opcao no menu:
+./comandos/sincronizar-todas.bat
+
+Opcoes do menu:
+[1] Converter videos para MP3
+[2] Sincronizar letras e atualizar musicas
+[3] Fazer tudo
+[4] Atualizar apenas a lista de musicas
+[0] Sair
+
+Esse comando tambem atualiza as musicas em assets\js\script.js automaticamente.

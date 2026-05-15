@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HEHE ❤</title>
+
+    <link rel="stylesheet" href="assets/css/style.css">
+    <script src="assets/js/script.js" defer></script>
+    <link rel="shortcut icon" href="assets/imagens/dxtly.PNG" type="image/x-icon">
+</head>
+
+<body>
+
+    <header class="topo">
+
+        <a href="index.html" class="logo-link">
+            <h1 class="logo">SA<span class="heart">❤</span>CH</h1>
+        </a>
+
+        <!-- PLAYER DE MÚSICA -->
+        <div class="musica-header">
+
+            <button class="botao-musica" id="botaoMusica" type="button" aria-expanded="false" aria-haspopup="true" aria-controls="painelMusica">
+                Música
+            </button>
+
+            <div class="caixa-musica" id="painelMusica">
+
+                <div class="logo-musica">
+                    SA<span class="heart">❤</span>CH
+                </div>
+
+                <h3 id="nomeMusica">Escolha uma música</h3>
+
+                <!-- CONTROLES DA MÚSICA -->
+                <div class="musica-tempo" id="tempoMusica" role="slider" tabindex="0" aria-label="Tempo da musica" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" aria-valuetext="00:00 / 00:00"></div>
+
+                <div class="controles-musica">
+                    <button class="controle-musica" id="voltarMusica" type="button" aria-label="Musica anterior">⏮</button>
+
+                    <button class="controle-musica botao-play-pause" id="playPauseMusica" type="button" aria-label="Tocar musica">
+                        ▶
+                    </button>
+
+                    <button class="controle-musica" id="proximaMusica" type="button" aria-label="Proxima musica">⏭</button>
+                </div>
+
+                <!-- LETRA SINCRONIZADA -->
+                <div class="musica-letra" id="letraMusica" aria-live="polite">
+                    ....
+                </div>
+
+                <div class="lista-musicas" id="listaMusicas" aria-label="Lista de musicas"></div>
+
+            </div>
+
+            <audio id="musica" preload="metadata" playsinline></audio>
+
+        </div>
+
+        <button class="menu-mobile-toggle" id="menuMobileToggle" type="button" aria-label="Abrir menu" aria-expanded="false" aria-controls="menuPrincipal"><span
+                class="menu-icon" aria-hidden="true"><span></span><span></span><span></span></span></button>
+
+        <nav class="topo2" id="menuPrincipal" aria-label="Menu principal">
+            <button type="button" onclick="location.href='index.html'">Início</button>
+            <button type="button" onclick="location.href='fotos.html'">Fotos</button>
+            <button type="button" onclick="location.href='videos.html'">Vídeos</button>
+            <button type="button" onclick="location.href='jogo.html'">Jogo</button>
+        </nav>
+
+    </header>
+
+    <main class="conteudo">
+
+        <div class="texto">
+            <h1></h1>
+            <p></p>
+        </div>
+
+    </main>
+
+</body>
+
+</html>
